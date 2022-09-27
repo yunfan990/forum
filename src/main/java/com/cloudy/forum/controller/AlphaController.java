@@ -23,10 +23,6 @@ public class AlphaController {
     @ResponseBody
     public String sayHello(){
         String n= alphaService.getName();
-
-        String ab="ab";
-        Integer.valueOf(ab);
-
         return "hello world!"+n;
     }
 }
