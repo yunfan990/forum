@@ -14,25 +14,26 @@ import javax.annotation.PreDestroy;
  * @description
  * @date 2022-09-27 13:22
  */
-@Service
-public class AlphaService {
-    public AlphaService(){
-        System.out.println("构造器实例化方法");
-    }
+public interface AlphaService {
+//    public AlphaService(){
+//        System.out.println("构造器实例化方法");
+//    }
+//
+//    @PostConstruct
+//    public void init(){
+//        System.out.println("初始化alphoservice");
+//    }
+//    @PreDestroy
+//    public void destory(){
+//        System.out.println("销毁对象");
+//    }
+//
+//    @Autowired
+//    private AlphaDao alphaDao;
+//
+//    public String getName(){
+//        return alphaDao.select();
+//    }
 
-    @PostConstruct
-    public void init(){
-        System.out.println("初始化alphoservice");
-    }
-    @PreDestroy
-    public void destory(){
-        System.out.println("销毁对象");
-    }
-
-    @Autowired
-    private AlphaDao alphaDao;
-
-    public String getName(){
-        return alphaDao.select();
-    }
+    public String getName();
 }
