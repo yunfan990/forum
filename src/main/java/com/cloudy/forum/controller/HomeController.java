@@ -4,6 +4,7 @@ import com.cloudy.forum.dao.DiscussPostMapper;
 import com.cloudy.forum.dao.UserMapper;
 import com.cloudy.forum.entity.DiscussPost;
 import com.cloudy.forum.entity.User;
+import com.cloudy.forum.entity.dto.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +28,11 @@ public class HomeController {
     private UserMapper userMapper;
 
     @RequestMapping(path = "/index", method = RequestMethod.GET)
-    public String getIndexPage(Model model){
-       List<DiscussPost> list= discussPostMapper.selectDiscussPosts(0,0,10);
+    public String getIndexPage(Model model, Page page){
+        page.setRows(discussPostMapper.selectDiscussPostRows(0));
+        page.setPath("/index");
+
+       List<DiscussPost> list= discussPostMapper.selectDiscussPosts(0,page.getOffset(),page.getLimit());
        List<Map<String,Object>> discussposts=new ArrayList<>();
        if(list!=null){
            for (DiscussPost post:list){
