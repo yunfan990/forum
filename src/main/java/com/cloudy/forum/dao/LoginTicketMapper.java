@@ -1,4 +1,4 @@
-package com.cloudy.forum.dao.mapper;
+package com.cloudy.forum.dao;
 
 import com.cloudy.forum.entity.LoginTicket;
 import org.apache.ibatis.annotations.Mapper;

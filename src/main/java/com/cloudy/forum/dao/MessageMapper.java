@@ -1,16 +1,16 @@
 package com.cloudy.forum.dao;
 
 import com.cloudy.forum.entity.Message;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
- * (message)数据DAO
+ * (message)数据Mapper
  *
  * @author yun fan
  * @since 2022-09-28 00:53:37
  * @description 自动类
- */
-@Repository
-public class MessageDao  {
+*/
+@Mapper
+public interface MessageMapper{
 
 }

@@ -10,48 +10,98 @@ import java.util.Date;
  * @since 2022-09-28 00:55:01
  * @description 自动类
  */
-public class User implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class User{
 
-    /**
-     * id
-     */
-	private Integer id;
-    /**
-     * username
-     */
+	private int id;
     private String username;
-    /**
-     * password
-     */
     private String password;
-    /**
-     * salt
-     */
     private String salt;
-    /**
-     * email
-     */
     private String email;
-    /**
-     * 0-普通用户; 1-超级管理员; 2-版主;
-     */
-    private Integer type;
-    /**
-     * 0-未激活; 1-已激活;
-     */
-    private Integer status;
-    /**
-     * activationCode
-     */
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
+
+    public String getHeaderUrl() {
+        return headerUrl;
+    }
+
+    public void setHeaderUrl(String headerUrl) {
+        this.headerUrl = headerUrl;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    private int type;
+    private int status;
     private String activationCode;
-    /**
-     * headerUrl
-     */
     private String headerUrl;
-    /**
-     * createTime
-     */
     private Date createTime;
 
 }
