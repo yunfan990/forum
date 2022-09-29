@@ -50,7 +50,7 @@ public class ForumApplicationTests implements ApplicationContextAware {
 		context.setVariable("username","sunday");
 		String content= templateEngine.process("/mail/demo",context);
 		System.out.println(content);
-		sendMail.SendMail("939358140@qq.com","HTML",content);
+		sendMail.sendMail("939358140@qq.com","HTML",content);
 
 
 

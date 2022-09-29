@@ -10,28 +10,62 @@ import java.util.Date;
  * @since 2022-09-28 00:55:46
  * @description 自动类
  */
-public class LoginTicket implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class LoginTicket {
 
-    /**
-     * id
-     */
-	private Integer id;
-    /**
-     * userId
-     */
-    private Integer userId;
-    /**
-     * ticket
-     */
+    private int id;
+    private int userId;
     private String ticket;
-    /**
-     * 0-有效; 1-无效;
-     */
-    private Integer status;
-    /**
-     * expired
-     */
+    private int status;
     private Date expired;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(String ticket) {
+        this.ticket = ticket;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public Date getExpired() {
+        return expired;
+    }
+
+    public void setExpired(Date expired) {
+        this.expired = expired;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginTicket{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", ticket='" + ticket + '\'' +
+                ", status=" + status +
+                ", expired=" + expired +
+                '}';
+    }
 }
