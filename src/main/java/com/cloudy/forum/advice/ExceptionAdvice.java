@@ -24,9 +24,9 @@ public class ExceptionAdvice {
     @ExceptionHandler({Exception.class})
     public void handlerException(Exception e, HttpServletRequest request, HttpServletResponse response) throws IOException{
         logger.error("服务器发生了异常："+e.getMessage());
-//        for (StackTraceElement element:e.getStackTrace()){
-//            logger.error(element.toString());
-//        }
+        for (StackTraceElement element:e.getStackTrace()){
+            logger.error(element.toString());
+        }
         String xRequestWith=request.getHeader("x-requested-with");
         if("XMLHttpRequest".equals(xRequestWith)){
             response.setContentType("application/plain;charset=utf-8");

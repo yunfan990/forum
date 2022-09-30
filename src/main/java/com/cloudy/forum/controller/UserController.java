@@ -1,5 +1,6 @@
 package com.cloudy.forum.controller;
 
+import com.cloudy.forum.annotation.LoginRequired;
 import com.cloudy.forum.entity.User;
 import com.cloudy.forum.service.UserService;
 import com.cloudy.forum.until.ForumUtil;
@@ -11,12 +12,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.annotation.Target;
 
 /**
  * @author li bin
@@ -41,12 +47,14 @@ public class UserController {
     @Autowired
     private HostHolder hostHolder;
 
+    @LoginRequired
     @RequestMapping(path = "/setting", method = RequestMethod.GET)
     public String getSettingPage(){
         return  "/site/setting";
     }
 
     //上传图片
+    @LoginRequired
     @RequestMapping(path = "/upload", method = RequestMethod.POST)
     public String uploadHeader(MultipartFile headerImage, Model model){
         if(headerImage==null){
@@ -60,7 +68,7 @@ public class UserController {
             return "/site/setting";
         }
         fileName= ForumUtil.generateUUID()+suffix;
-        File dest=new File(uploadPath);
+        File dest=new File(uploadPath+"/"+fileName);
         try {
             headerImage.transferTo(dest);
         } catch (IOException e) {
@@ -72,5 +80,24 @@ public class UserController {
         String header=domain+contextPath+"/user/header/"+fileName;
         userService.updateHeader(user.getId(),header);
         return "redirect:/index";
+    }
+
+    @RequestMapping(path = "/header/{fileName}",method = RequestMethod.GET)
+    public void getHeader(@PathVariable("fileName") String fileName, HttpServletResponse response){
+        fileName = uploadPath + "/" + fileName;
+        String suffix=fileName.substring(fileName.lastIndexOf(".")+1);
+        response.setContentType("image/"+suffix);
+        try(FileInputStream fils= new FileInputStream(fileName))
+        {
+            OutputStream os= response.getOutputStream();
+            byte[] buffer=new byte[1024]; //声明 1024缓冲区
+            int b=0;//游标
+            while ((b=fils.read(buffer))!=-1){
+                os.write(buffer,0,b);
+            }
+        }catch (IOException e){
+            logger.error("读取头像失败:"+e.getMessage());
+        }
+
     }
 }

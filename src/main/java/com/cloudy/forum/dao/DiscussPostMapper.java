@@ -20,5 +20,10 @@ public interface DiscussPostMapper{
     //@param注解参数别名（动态参数，有且只有一个参数）
     int selectDiscussPostRows(@Param("userId") int userId);
 
+    int insertDiscussPost(DiscussPost discussPost);
+
+    DiscussPost selectDiscussPostById(int id);
+
+    int updateCommentCount(int id, int commentCount);
 
 }
