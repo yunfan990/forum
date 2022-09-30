@@ -46,21 +46,10 @@ public class ForumApplicationTests implements ApplicationContextAware {
 	@Test
 	public void testMail(){
 		//sendMail.SendMail("939358140@qq.com","TEST","测试内容");
-		Context context=new Context();
-		context.setVariable("username","sunday");
-		String content= templateEngine.process("/mail/demo",context);
-		System.out.println(content);
-		sendMail.sendMail("939358140@qq.com","HTML",content);
-
-
-
-
-
-
-
-
-
-
-
+//		Context context=new Context();
+//		context.setVariable("username","sunday");
+//		String content= templateEngine.process("/mail/demo",context);
+//		System.out.println(content);
+//		sendMail.sendMail("939358140@qq.com","HTML",content);
 	}
 }

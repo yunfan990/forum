@@ -157,13 +157,18 @@ public class UserService {
         map.put("ticket", loginTicket.getTicket());
         return map;
     }
-
+    //登出
     public void logout(String ticket) {
         loginTicketMapper.updateStatus(ticket, 1);
     }
 
+    //过滤器查找凭证
     public LoginTicket findLoginTicket(String ticket) {
         return loginTicketMapper.selectByTicket(ticket);
     }
 
+    //上传头像
+    public int updateHeader(int userId, String headerUrl){
+        return  userMapper.updateHeader(userId, headerUrl);
+    }
 }
