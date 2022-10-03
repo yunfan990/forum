@@ -40,7 +40,7 @@ public class ServiceLogAspect {
      * 开始时间
      */
     private long startTime = 0L;
-    @Pointcut("execution(* com.cloudy.forum.controller..*.*(..))")
+    @Pointcut("execution(* com.cloudy.forum.controller.*.*(..))")
     public void pointcut(){}
 
     @Before("pointcut()")
