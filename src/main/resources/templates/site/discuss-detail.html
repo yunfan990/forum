@@ -132,12 +132,11 @@
 							<ul class="d-inline float-right">
 								<li class="d-inline ml-2"><a href="#" class="text-primary">赞(1)</a></li>
 								<li class="d-inline ml-2">|</li>
-								<li class="d-inline ml-2"><a href="#" class="text-primary">回复(<i th:text="${cvo.replyCount}">2</i>)</a></li>
+								<li class="d-inline ml-2"><a href="#" class="text-primary">回复(<i th:text="${cvo.replayCount}">2</i>)</a></li>
 							</ul>
 						</div>
 						<!-- 回复列表 -->
 						<ul class="list-unstyled mt-4 bg-gray p-3 font-size-12 text-muted">
-
 							<li class="pb-3 pt-3 mb-3 border-bottom" th:each="rvo:${cvo.replys}">
 								<div>
 										<span th:if="${rvo.target==null}">
@@ -171,7 +170,6 @@
 									</div>
 								</div>
 							</li>
-
 							<!-- 回复输入框 -->
 							<li class="pb-3 pt-3">
 								<form method="post" th:action="@{|/comment/add/${post.id}|}">
@@ -190,7 +188,7 @@
 				</li>
 			</ul>
 			<!-- 分页 -->
-			<nav class="mt-5">
+			<nav class="mt-5" th:replace="index::pagination">
 				<ul class="pagination justify-content-center">
 					<li class="page-item"><a class="page-link" href="#">首页</a></li>
 					<li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>

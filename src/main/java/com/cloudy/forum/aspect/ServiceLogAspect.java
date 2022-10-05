@@ -122,7 +122,7 @@ public class ServiceLogAspect {
         logContext += "\r\n ┃ 请求结束，接口耗时： " + endTime;
         logContext += "\r\n  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━";
 
-        logger.info(logContext);
+        //logger.info(logContext);
 
         return result;
 
